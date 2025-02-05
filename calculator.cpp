@@ -5,51 +5,62 @@
 using namespace std;
 
 // Base class
-class Student {
+class Student
+{
 protected:
     string name;
     int id;
     vector<float> grades;
 
 public:
-    void setStudentinfo(const string& studentName, int studentid) {
+    void setStudentinfo(const string &studentName, int studentid)
+    {
         name = studentName;
         id = studentid;
     }
 
-    void setGrades(const vector<float>& studentGrades) {
+    void setGrades(const vector<float> &studentGrades)
+    {
         grades = studentGrades;
     }
 
-    void displayStudentinfo() const {
+    void displayStudentinfo() const
+    {
         cout << "Student Name: " << name << endl;
         cout << "Student ID: " << id << endl;
     }
 };
 
 // Derived class
-class CGPACalculator : public Student {
+class CGPACalculator : public Student
+{
 public:
-    float calculateCGPA() const {
-        if (grades.empty()) return 0.0f;
+    float calculateCGPA() const
+    {
+        if (grades.empty())
+            return 0.0f;
         float total = 0.0f;
-        for (float grade : grades) {
+        for (float grade : grades)
+        {
             total += grade;
         }
         return total / grades.size();
     }
 
-    void displayCGPA() const {
+    void displayCGPA() const
+    {
         cout << "CGPA: " << calculateCGPA() << endl;
     }
 };
 
-int main() {
+int main()
+{
     const int studentCount = 3;
     vector<CGPACalculator> students(studentCount);
 
     // Input details for each student
-    for (int i = 0; i < studentCount; ++i) {
+    for (int i = 0; i < studentCount; ++i)
+    {
         string name;
         int id;
         int subjectCount;
@@ -68,7 +79,8 @@ int main() {
 
         grades.resize(subjectCount);
         cout << "Enter grades (out of 4.0): ";
-        for (int j = 0; j < subjectCount; ++j) {
+        for (int j = 0; j < subjectCount; ++j)
+        {
             cin >> grades[j];
         }
 
@@ -78,7 +90,8 @@ int main() {
 
     // Display details and CGPA for each student
     cout << "\nStudent Details and CGPA:\n";
-    for (int i = 0; i < studentCount; ++i) {
+    for (int i = 0; i < studentCount; ++i)
+    {
         cout << "\nStudent " << i + 1 << "\n";
         students[i].displayStudentinfo();
         students[i].displayCGPA();
